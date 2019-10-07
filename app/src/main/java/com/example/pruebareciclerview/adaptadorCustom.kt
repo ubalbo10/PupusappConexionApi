@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class AdapterList(items:ArrayList<Pupusa>): RecyclerView.Adapter<AdapterList.ViewHolder>() {
+class AdapterList(items:List<Relleno>): RecyclerView.Adapter<AdapterList.ViewHolder>() {
 
-    var ListDatos=ArrayList<Pupusa>()
+    var ListDatos=items
 
     init {
         this.ListDatos=items
@@ -29,13 +29,13 @@ class AdapterList(items:ArrayList<Pupusa>): RecyclerView.Adapter<AdapterList.Vie
         holder.asignarDatos(ListDatos[position])
         holder.btnMaiz.setOnClickListener {
             var pupusa=ListDatos.get(position)
-            pupusa.conMaiz=pupusa.conMaiz+1
-            holder.btnMaiz.setText("Maiz:${pupusa.conMaiz}")
+           // pupusa.conMaiz=pupusa.conMaiz+1
+           // holder.btnMaiz.setText("Maiz:${pupusa.conMaiz}")
         }
         holder.btnArroz.setOnClickListener {
             var pupusa=ListDatos.get(position)
-            pupusa.conArroz=pupusa.conArroz+1
-            holder.btnArroz.setText("Arroz:${pupusa.conArroz}")
+           // pupusa.conArroz=pupusa.conArroz+1
+           // holder.btnArroz.setText("Arroz:${pupusa.conArroz}")
         }
 
     }
@@ -61,8 +61,8 @@ class AdapterList(items:ArrayList<Pupusa>): RecyclerView.Adapter<AdapterList.Vie
 
         }
 
-        fun asignarDatos(datos: Pupusa) {
-            relleno.text=datos.relleno
+        fun asignarDatos(datos: Relleno) {
+            relleno.text=datos.nombre
             btnArroz.text="Arroz"
             btnMaiz.text="Maiz"
         }

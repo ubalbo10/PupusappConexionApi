@@ -8,20 +8,22 @@ import java.util.concurrent.TimeUnit
 
 class ApiService {
     companion object {
-        fun create(): WikiApiService {
+        fun create(): PupusasApiService {
 //region Logging de llamadas
             val httpClient = OkHttpClient.Builder()
                 .readTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(10, TimeUnit.SECONDS)
             val logging = HttpLoggingInterceptor()
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+            httpClient.addInterceptor(logging)
+
+
 //endregion
 //region inicializacion de Retrofit
             val retrofit = Retrofit.Builder()
-                .addConverterFactory(
-                    GsonConverterFactory.create()
-                )
-                .baseUrl("https://bitlab-dam.herokuapp.com/")
+
+                .baseUrl("https://pupusapp-api.herokuapp.com/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build()
 //endregion
@@ -31,3 +33,5 @@ class ApiService {
         }
     }
 }
+
+

@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface PupusasApiService {
     @GET("rellenos")
-    fun getRellenos() : Call<RellenoWrapper>
-    @POST("orden")
+    fun getRellenos() : Call<List<Relleno>>
+    @POST("ordens")
     fun submitOrden(@Body params: Pupusa) : Call<Pupusa>
 }
